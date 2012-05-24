@@ -1,6 +1,7 @@
 // import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 import QtQuick 1.1
 import com.nokia.meego 1.1 // for MeeGo 1.2 Harmattan components. See http://harmattan-dev.nokia.com/docs/library/html/qt-components/qt-components.html page.
+import com.nokia.extras 1.1 // See http://harmattan-dev.nokia.com/docs/library/html/qt-components-extras/qt-components-extras.html?tab=3&q=components&sp=all page.
 import QtMobility.systeminfo 1.2 // See http://harmattan-dev.nokia.com/docs/library/html/guide/html/Developer_Library_Best_practices_for_application_development_Optimising_power_consumption_Using_heartbeat.html page.
 
 Page {
@@ -28,11 +29,48 @@ Page {
     }
 
     Label {
-        text: qsTr("IMEI: ") + deviceInfo.imei + "\n"
-              + qsTr("Manufacturer: ") + deviceInfo.manufacturer + "\n"
-              + qsTr("Model: ") + deviceInfo.model + "\n"
-              + qsTr("Product Name: ") + deviceInfo.productName + "\n"
-              + qsTr("Unique Device ID: ") + deviceInfo.uniqueDeviceID;
+        id: labelImei
+        text: qsTr("International Mobile\nEquipment Identity (IMEI)")
+        font: UiConstants.TitleFont // See http://harmattan-dev.nokia.com/docs/library/html/qt-components/qt-components-meego-interfaceguide.html page.
+        verticalAlignment: Text.AlignVCenter
+        anchors.bottom: textInput.top
+        anchors.margins: 20
+    }
+
+    TextInput {
+        id: textInput
+        anchors.centerIn: parent
+        anchors.margins: -10
+        readOnly: true;
+        font.pixelSize: 32
+        font.bold: true
+        //font.family: platformStyle.fontFamily
+        //font.pixelSize: UiConstants.HeaderFont // See http://harmattan-dev.nokia.com/docs/library/html/qt-components/qt-components-meego-interfaceguide.html page.
+        //font.pixelSize: platformStyle.fontPixelSize
+
+        color: "white" //platformStyle.textColor
+        selectionColor: "transparent"
+        text: deviceInfo.imei
+        MouseArea {
+            anchors.fill: textInput
+            onClicked: {
+                textInput.selectAll();
+                textInput.copy()
+                showBannerCopied();
+            }
+        }
+    }
+
+    InfoBanner {
+        // See http://harmattan-dev.nokia.com/docs/library/html/qt-components-extras/qt-components-meego-extrasinfobanner.html?tab=3&q=components&sp=all page.
+        id: infoBannerCopied
+        text: "Your IMEI number has been copied."
+        iconSource: "system_banner_thumbnail.png"
+    }
+
+    function showBannerCopied() {
+        infoBannerCopied.timerShowTime = 2000; // default is 3000 ms
+        infoBannerCopied.show();
     }
 
     tools: ToolBarLayout {

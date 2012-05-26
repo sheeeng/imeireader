@@ -9,11 +9,11 @@ Page {
     orientationLock: PageOrientation.LockPortrait; // lock the screen orientation to portrait.
 
     AboutDialog {
-        id: aboutDialog
+        id: aboutDialog;
     }
 
     function showAboutDialog(){
-        aboutDialog.open()
+        aboutDialog.open();
     }
 
     ConfirmCloseDialog {
@@ -25,50 +25,85 @@ Page {
     }
 
     DeviceInfo {
-        id: deviceInfo
+        id: deviceInfo;
     }
 
     Label {
-        id: labelImei
-        text: qsTr("International Mobile\nEquipment Identity (IMEI)")
-        font: UiConstants.TitleFont // See http://harmattan-dev.nokia.com/docs/library/html/qt-components/qt-components-meego-interfaceguide.html page.
-        verticalAlignment: Text.AlignVCenter
-        anchors.bottom: textInput.top
-        anchors.margins: 20
+        id: labelImeiAbbreviation;
+        text: qsTr("IMEI");
+        //font: UiConstants.TitleFont; // See http://harmattan-dev.nokia.com/docs/library/html/qt-components/qt-components-meego-interfaceguide.html page.
+        font.pixelSize: 48;
+        font.bold: true;
+        color: "ivory";
+        width: parent.width;
+        horizontalAlignment: Text.AlignHCenter;
+        anchors.bottom: labelImei.top;
+        anchors.margins: 5;
+    }
+
+    Label {
+        id: labelImei;
+        text: qsTr("International Mobile\nEquipment Identity");
+        font: UiConstants.SmallTitleFont; // See http://harmattan-dev.nokia.com/docs/library/html/qt-components/qt-components-meego-interfaceguide.html page.
+        color: "ivory";
+        width: parent.width;
+        horizontalAlignment: Text.AlignHCenter;
+        anchors.bottom: textInputImeiDisplay.top;
+        anchors.bottomMargin: 40;
     }
 
     TextInput {
-        id: textInput
-        anchors.centerIn: parent
-        anchors.margins: -10
+        id: textInputImeiDisplay;
+        anchors.centerIn: parent;
+        anchors.margins: -10;
         readOnly: true;
-        font.pixelSize: 32
-        font.bold: true
+        font.pixelSize: 48;
+        font.bold: true;
+        width: parent.width;
+        horizontalAlignment: Text.AlignHCenter;
         //font.family: platformStyle.fontFamily
         //font.pixelSize: UiConstants.HeaderFont // See http://harmattan-dev.nokia.com/docs/library/html/qt-components/qt-components-meego-interfaceguide.html page.
         //font.pixelSize: platformStyle.fontPixelSize
 
-        color: "white" //platformStyle.textColor
-        selectionColor: "transparent"
-        text: deviceInfo.imei
+        color: "white"; //platformStyle.textColor
+        selectionColor: "transparent";
+        text: deviceInfo.imei;
         MouseArea {
-            anchors.fill: textInput
+            anchors.fill: textInputImeiDisplay
             onClicked: {
-                textInput.selectAll();
-                textInput.copy()
-                showBannerCopied();
+                copyImei();
             }
         }
     }
 
-    InfoBanner {
-        // See http://harmattan-dev.nokia.com/docs/library/html/qt-components-extras/qt-components-meego-extrasinfobanner.html?tab=3&q=components&sp=all page.
-        id: infoBannerCopied
-        text: "Your IMEI number has been copied."
-        iconSource: "system_banner_thumbnail.png"
+    Label {
+        id: labelTapImeiToCopy;
+        text: qsTr("Tap on IMEI number to copy it.");
+        //font: UiConstants.SmallTitleFont; // See http://harmattan-dev.nokia.com/docs/library/html/qt-components/qt-components-meego-interfaceguide.html page.
+        font.pointSize: 24;
+        font.bold: true;
+        font.italic: true;
+        color: "azure";
+        width: parent.width;
+        horizontalAlignment: Text.AlignHCenter;
+        anchors.top: textInputImeiDisplay.bottom;
+        anchors.topMargin: 20;
     }
 
-    function showBannerCopied() {
+    function copyImei() {
+        textInputImeiDisplay.selectAll();
+        textInputImeiDisplay.copy();
+        showBannerImeiCopied();
+    }
+
+    InfoBanner {
+        // See http://harmattan-dev.nokia.com/docs/library/html/qt-components-extras/qt-components-meego-extrasinfobanner.html?tab=3&q=components&sp=all page.
+        id: infoBannerCopied;
+        text: qsTr("Your IMEI number has been copied.");
+        iconSource: "image://theme/icon-m-toolbar-attachment"; //See http://wiki.meego.com/Harmattan_icons page.
+    }
+
+    function showBannerImeiCopied() {
         infoBannerCopied.timerShowTime = 2000; // default is 3000 ms
         infoBannerCopied.show();
     }
@@ -81,7 +116,7 @@ Page {
             onClicked: showConfirmCloseDialog(); //Qt.quit(); //pageStack.pop();
         }
         ToolIcon {
-            platformIconId: "toolbar-select-text" // See http://wiki.meego.com/Harmattan_icons page.
+            platformIconId: "toolbar-select-text"; // See http://wiki.meego.com/Harmattan_icons page.
             //iconId: theme.inverted ? "icon-m-toolbar-select-text-white" : "icon-m-toolbar-select-text";
             onClicked: {
                 theme.inverted = !theme.inverted;
@@ -91,16 +126,16 @@ Page {
             }
         }
         ToolButton {
-            id: detailsButton
-            flat: false
-            text: "About"
-            onClicked: showAboutDialog();
+            id: detailsButton;
+            flat: false;
+            text: qsTr("Copy");
+            onClicked: copyImei();
         }
         ToolIcon {
             iconId: "toolbar-view-menu";
             platformIconId: "toolbar-view-menu";
             anchors.right: parent === undefined ? undefined : parent.right;
-            onClicked: (helpMenu.status === DialogStatus.Closed) ? helpMenu.open() : helpMenu.close()
+            onClicked: (helpMenu.status === DialogStatus.Closed) ? helpMenu.open() : helpMenu.close();
         }
     }
     Menu {

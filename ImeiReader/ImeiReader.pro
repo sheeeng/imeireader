@@ -29,11 +29,11 @@ QML_IMPORT_PATH =
 symbian {
     #TARGET = ImeiReader
     TARGET.UID3 = 0xE0CFB44A
-    DEFINES += IMEIREADER_VERSION=\\\"1.0.0.0\\\"
+    DEFINES += IMEIREADER_VERSION=\\\"0.0.1\\\"
     #platform_qml.source = qml/symbian/ImeiReader
     #platform_qml.target = qml
 } else:contains(MEEGO_EDITION,harmattan): {
-    DEFINES += IMEIREADER_VERSION=\\\"1.0.0.0\\\"
+    DEFINES += IMEIREADER_VERSION=\\\"0.0.1\\\"
     #platform_qml.source = qml/harmattan/ImeiReader
     #platform_qml.target = qml
 }
@@ -64,6 +64,11 @@ CONFIG += qdeclarative-boostable
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp \
     settings.cpp
+
+# Deploy splash screen images. See https://projects.developer.nokia.com/svn/nfcinteractor/nfcinteractor.pro page.
+splashimages.files = ImeiReaderSplashPortrait.png ImeiReaderSplashLandscape.png
+splashimages.path = /opt/$${TARGET}/
+INSTALLS += splashimages
 
 # Please do not modify the following two lines. Required for deployment.
 include(qmlapplicationviewer/qmlapplicationviewer.pri)

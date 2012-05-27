@@ -5,7 +5,7 @@ Type=Application
 Terminal=false
 Name=ImeiReader
 # See http://harmattan-dev.nokia.com/docs/library/html/guide/html/splash.html page.
-Exec=/usr/bin/invoker --single-instance --splash /usr/share/ImeiReader/ImeiReaderSplash.jpg --splash-landscape=/usr/share/ImeiReader/ImeiReaderSplashLandscape.jpg --type=d -s /opt/ImeiReader/bin/ImeiReader
+Exec=/usr/bin/invoker --splash /opt/ImeiReader/ImeiReaderSplashPortrait.png --splash-landscape=/opt/ImeiReader/ImeiReaderSplashLandscape.png --type=d --single-instance  /opt/ImeiReader/bin/ImeiReader
 #The recommended size for the screen is 854 x 480 pixels.
 Icon=/usr/share/icons/hicolor/80x80/apps/ImeiReader80.png
 X-Window-Icon=

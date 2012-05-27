@@ -5,7 +5,7 @@ import com.nokia.extras 1.1 // See http://harmattan-dev.nokia.com/docs/library/h
 import QtMobility.systeminfo 1.2 // See http://harmattan-dev.nokia.com/docs/library/html/guide/html/Developer_Library_Best_practices_for_application_development_Optimising_power_consumption_Using_heartbeat.html page.
 
 Page {
-    id: mainPage
+    id: mainPage;
     orientationLock: PageOrientation.LockPortrait; // lock the screen orientation to portrait.
 
     AboutDialog {
@@ -32,6 +32,7 @@ Page {
         id: labelImeiAbbreviation;
         text: qsTr("IMEI");
         //font: UiConstants.TitleFont; // See http://harmattan-dev.nokia.com/docs/library/html/qt-components/qt-components-meego-interfaceguide.html page.
+        font.family: "Nokia Pure";
         font.pixelSize: 48;
         font.bold: true;
         color: "ivory";
@@ -44,7 +45,12 @@ Page {
     Label {
         id: labelImei;
         text: qsTr("International Mobile\nEquipment Identity");
-        font: UiConstants.SmallTitleFont; // See http://harmattan-dev.nokia.com/docs/library/html/qt-components/qt-components-meego-interfaceguide.html page.
+        //font: UiConstants.SmallTitleFont; // See http://harmattan-dev.nokia.com/docs/library/html/qt-components/qt-components-meego-interfaceguide.html page.
+        font.family: "Nokia Pure";
+        font.pointSize: 24;
+        font.bold: true;
+        font.italic: true;
+        opacity: 0.6; // See http://doc.qt.nokia.com/4.7-snapshot/qml-item.html#opacity-prop page.
         color: "ivory";
         width: parent.width;
         horizontalAlignment: Text.AlignHCenter;
@@ -57,6 +63,7 @@ Page {
         anchors.centerIn: parent;
         anchors.margins: -10;
         readOnly: true;
+        font.family: "Nokia Pure";
         font.pixelSize: 48;
         font.bold: true;
         width: parent.width;
@@ -80,9 +87,11 @@ Page {
         id: labelTapImeiToCopy;
         text: qsTr("Tap on IMEI number to copy it.");
         //font: UiConstants.SmallTitleFont; // See http://harmattan-dev.nokia.com/docs/library/html/qt-components/qt-components-meego-interfaceguide.html page.
+        font.family: "Nokia Pure";
         font.pointSize: 24;
         font.bold: true;
         font.italic: true;
+        opacity: 0.6; // See http://doc.qt.nokia.com/4.7-snapshot/qml-item.html#opacity-prop page.
         color: "azure";
         width: parent.width;
         horizontalAlignment: Text.AlignHCenter;
@@ -99,7 +108,7 @@ Page {
     InfoBanner {
         // See http://harmattan-dev.nokia.com/docs/library/html/qt-components-extras/qt-components-meego-extrasinfobanner.html?tab=3&q=components&sp=all page.
         id: infoBannerCopied;
-        text: qsTr("Your IMEI number has been copied.");
+        text: qsTr("The IMEI number has been copied.");
         iconSource: "image://theme/icon-m-toolbar-attachment"; //See http://wiki.meego.com/Harmattan_icons page.
     }
 

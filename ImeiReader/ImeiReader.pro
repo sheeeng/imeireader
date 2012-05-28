@@ -15,28 +15,35 @@ exists($$QMAKE_INCDIR_QT"/../qmsystem2/qmkeys.h"):!contains(MEEGO_EDITION,harmat
 #	    multimedia
 }
 
-# Add more folders to ship with the application, here
-folder_01.source = qml/ImeiReader
-folder_01.target = qml
-DEPLOYMENTFOLDERS = folder_01
-
 # Additional import path used to resolve QML modules in Creator's code model
 QML_IMPORT_PATH =
 
 #symbian:TARGET.UID3 = 0xE0CFB44A
 
+# Add more folders to ship with the application, here
+# Files common to all platforms
+common_qml_files.source = qml/common/ImeiReader
+common_qml_files.target = qml
+images_files.source = images
+images_files.target = images
+
 # Platform specific files and configuration
 symbian {
     #TARGET = ImeiReader
     TARGET.UID3 = 0xE0CFB44A
-    DEFINES += IMEIREADER_VERSION=\\\"0.0.1\\\"
-    #platform_qml.source = qml/symbian/ImeiReader
-    #platform_qml.target = qml
+    #DEFINES += IMEIREADER_VERSION=\\\"0.0.1\\\"
+    message($$IMEIREADER_VERSION)
+    platform_qml_files.source = qml/symbian/ImeiReader
+    platform_qml_files.target = qml
 } else:contains(MEEGO_EDITION,harmattan): {
     DEFINES += IMEIREADER_VERSION=\\\"0.0.1\\\"
-    #platform_qml.source = qml/harmattan/ImeiReader
-    #platform_qml.target = qml
+    platform_qml_files.source = qml/harmattan/ImeiReader
+    platform_qml_files.target = qml
 }
+
+message($$_PRO_FILE_)
+
+DEPLOYMENTFOLDERS = common_qml_files images_files platform_qml_files
 
 # Smart Installer package's UID
 # This UID is from the protected range and therefore the package will
@@ -59,16 +66,18 @@ MOBILITY += systeminfo
 CONFIG += qdeclarative-boostable
 
 # Add dependency to Symbian components
-# CONFIG += qt-components
+CONFIG += qt-components
 
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp \
     settings.cpp
 
-# Deploy splash screen images. See https://projects.developer.nokia.com/svn/nfcinteractor/nfcinteractor.pro page.
-splashimages.files = ImeiReaderSplashPortrait.png ImeiReaderSplashLandscape.png
-splashimages.path = /opt/$${TARGET}/
-INSTALLS += splashimages
+contains(MEEGO_EDITION,harmattan): {
+	# Deploy splash screen images. See https://projects.developer.nokia.com/svn/nfcinteractor/nfcinteractor.pro page.
+	splashimages.files = ImeiReaderSplashPortrait.png ImeiReaderSplashLandscape.png
+	splashimages.path = /opt/$${TARGET}/
+	INSTALLS += splashimages
+}
 
 # Please do not modify the following two lines. Required for deployment.
 include(qmlapplicationviewer/qmlapplicationviewer.pri)

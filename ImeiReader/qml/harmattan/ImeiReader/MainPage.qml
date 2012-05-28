@@ -135,7 +135,7 @@ Page {
             }
         }
         ToolButton {
-            id: detailsButton;
+            id: buttonCopy;
             flat: false;
             text: qsTr("Copy");
             onClicked: copyImei();

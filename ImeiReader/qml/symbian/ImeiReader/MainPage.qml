@@ -10,17 +10,14 @@ Page {
 
     Component.onCompleted: {
         console.log("PageStackWindow onCompleted.");
-        console.log((platformInverted ? "Theme inverted." : "Theme not inverted."));
-        console.log((Settings.themeInverted ? "Settings.themeInverted inverted." : "Settings.themeInverted not inverted."));
-        platformInverted = Settings.themeInverted; // read settings upon startup
-        imageBackground.source = platformInverted ? "qrc:/background/images/pattern_154.gif" : "qrc:/background/images/pattern_157.gif"; // See http://www.squidfingers.com/patterns page.
-        //theme.color = 12; // See http://www.meegoexperts.com/2011/09/qml-colour-themes-meego-harmattan/ and http://forum.meego.com/showthread.php?t=4387 pages.
+        console.log((platformInverted ? "onCompleted - Theme inverted." : "Theme not inverted."));
+        console.log((Settings.themeInverted ? "onCompleted - Settings.themeInverted inverted." : "Settings.themeInverted not inverted."));
     }
 
     Image { // See http://qt-project.org/doc/qt-4.8/qml-image.html page.
         id: imageBackground;
         anchors.fill: parent;
-        source: platformInverted ? "qrc:/background/images/pattern_154.gif" : "qrc:/background/images/pattern_157.gif"; // See http://www.squidfingers.com/patterns page.
+        source: Settings.themeInverted ? "qrc:/background/images/pattern_154.gif" : "qrc:/background/images/pattern_157.gif"; // See http://www.squidfingers.com/patterns page.
         fillMode: Image.Tile;
     }
 
@@ -47,7 +44,6 @@ Page {
     Label {
         id: labelImeiAbbreviation;
         text: qsTr("IMEI");
-        //font: UiConstants.TitleFont; // See http://harmattan-dev.nokia.com/docs/library/html/qt-components/qt-components-meego-interfaceguide.html page.
         font.family: "Nokia Pure";
         font.pixelSize: 36;
         font.bold: true;
@@ -61,7 +57,6 @@ Page {
     Label {
         id: labelImei;
         text: qsTr("International Mobile\nEquipment Identity");
-        //font: UiConstants.SmallTitleFont; // See http://harmattan-dev.nokia.com/docs/library/html/qt-components/qt-components-meego-interfaceguide.html page.
         font.family: "Nokia Pure";
         font.pointSize: 24;
         font.bold: true;
@@ -84,10 +79,6 @@ Page {
         font.bold: true;
         width: parent.width-10;
         horizontalAlignment: Text.AlignHCenter;
-        //font.family: platformStyle.fontFamily
-        //font.pixelSize: UiConstants.HeaderFont // See http://harmattan-dev.nokia.com/docs/library/html/qt-components/qt-components-meego-interfaceguide.html page.
-        //font.pixelSize: platformStyle.fontPixelSize
-
         color: "white"; //platformStyle.textColor
         selectionColor: "transparent";
         text: deviceInfo.imei;
@@ -102,7 +93,6 @@ Page {
     Label {
         id: labelTapImeiToCopy;
         text: qsTr("Tap on IMEI number to copy it.");
-        //font: UiConstants.SmallTitleFont; // See http://harmattan-dev.nokia.com/docs/library/html/qt-components/qt-components-meego-interfaceguide.html page.
         font.family: "Nokia Pure";
         font.pointSize: 24;
         font.bold: true;
@@ -122,7 +112,6 @@ Page {
     }
 
     InfoBanner {
-        // See http://harmattan-dev.nokia.com/docs/library/html/qt-components-extras/qt-components-meego-extrasinfobanner.html?tab=3&q=components&sp=all page.
         id: infoBannerCopied;
         text: qsTr("The IMEI number has been copied."); //See http://doc.qt.nokia.com/qt-components-symbian/qml-infobanner.html page.
     }
@@ -135,41 +124,37 @@ Page {
     ToolBar {
         id: toolbar
         anchors.bottom: parent.bottom
-        platformInverted: platformInverted;
+        platformInverted: !Settings.themeInverted; // It's dark theme by default on Symbian Belle platform.
         tools: ToolBarLayout {
             // See list of icons on Symbian at http://qt.gitorious.org/qt-components/qt-components/blobs/d1ee37d5da0cecf58c2729d55e296e349c3a1d7d/doc/src/snippets/symbian/snippet-toolbar-icons.qml page.
             ToolButton {
                 id: backButton
                 iconSource: "toolbar-back"; // See http://doc.qt.nokia.com/qt-components-symbian/qml-toolbarlayout.html page.
-                platformInverted: platformInverted;
                 enabled: true;
                 onClicked: showConfirmCloseDialog(); //Qt.quit(); //pageStack.pop();
             }
             ToolButton {
-                //iconSource: "toolbar-list"; // See http://doc.qt.nokia.com/qt-components-symbian/qml-toolbutton.html page.
-                //iconId: theme.inverted ? "icon-m-toolbar-select-text-white" : "icon-m-toolbar-select-text";
-                text: qsTr("Theme");
-                platformInverted: platformInverted;
-                onClicked: {
+                id: toolButtonThemeInverted
+                text: Settings.themeInverted ? qsTr("Light") : qsTr("Dark");
+                checkable: true;
+                checked: platformInverted;
+                onCheckedChanged: {
                     platformInverted = !platformInverted; // See http://doc.qt.nokia.com/qtquick-components-symbian-1.1/inverted-style.html page.
                     Settings.themeInverted = platformInverted;
-                    imageBackground.source = platformInverted ? "qrc:/background/images/pattern_154.gif" : "qrc:/background/images/pattern_157.gif"; // See http://www.squidfingers.com/patterns page.
-                    toolbar.platformInverted = platformInverted;
-                    buttonCopy.platformInverted = platformInverted;
-                    console.log((platformInverted? "Theme inverted." : "Theme not inverted."));
-                    console.log((Settings.themeInverted ? "Settings.themeInverted inverted." : "Settings.themeInverted not inverted."));
+                    imageBackground.source = Settings.themeInverted ? "qrc:/background/images/pattern_154.gif" : "qrc:/background/images/pattern_157.gif"; // See http://www.squidfingers.com/patterns page.
+                    toolButtonThemeInverted.text = Settings.themeInverted ? qsTr("Dark") : qsTr("Light");
+                    console.log((platformInverted? "onCheckedChanged - Theme inverted." : "Theme not inverted."));
+                    console.log((Settings.themeInverted ? "onCheckedChanged - Settings.themeInverted inverted." : "Settings.themeInverted not inverted."));
                 }
             }
             ToolButton {
                 id: buttonCopy;
-                platformInverted: platformInverted;
                 flat: false;
                 text: qsTr("Copy");
                 onClicked: copyImei();
             }
             ToolButton {
                 iconSource: "toolbar-menu";
-                platformInverted: platformInverted;
                 anchors.right: parent === undefined ? undefined : parent.right;
                 onClicked: (helpMenu.status === DialogStatus.Closed) ? helpMenu.open() : helpMenu.close();
             }

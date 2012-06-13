@@ -130,8 +130,8 @@ Page {
             onClicked: {
                 theme.inverted = !theme.inverted;
                 Settings.themeInverted = theme.inverted;
-                console.log((theme.inverted ? "Theme inverted." : "Theme not inverted."));
-                console.log((Settings.themeInverted ? "Settings.themeInverted inverted." : "Settings.themeInverted not inverted."));
+                //console.log((theme.inverted ? "Theme inverted." : "Theme not inverted."));
+                //console.log((Settings.themeInverted ? "Settings.themeInverted inverted." : "Settings.themeInverted not inverted."));
             }
         }
         ToolButton {
@@ -151,17 +151,17 @@ Page {
         id: helpMenu
         visualParent: mainPage
         MenuLayout {
-            MenuItem { text: "About"; onClicked: showAboutDialog(); }
+            MenuItem { text: qsTr("About"); onClicked: showAboutDialog(); }
+//            MenuItem {
+//                text: qsTr("Website");
+//                property string acid3TestLink: "http://acid3.acidtests.org/";
+//                onClicked: {
+//                    Qt.openUrlExternally(acid3TestLink);
+//                    aboutDialog.accept();
+//                }
+//            }
             MenuItem {
-                text: "Website";
-                property string acid3TestLink: "http://acid3.acidtests.org/";
-                onClicked: {
-                    Qt.openUrlExternally(acid3TestLink);
-                    aboutDialog.accept();
-                }
-            }
-            MenuItem {
-                text: "Exit";
+                text: qsTr("Exit");
                 onClicked: {
                     showConfirmCloseDialog(); //Qt.quit();
                 }

@@ -22,7 +22,7 @@ CommonDialog {
                    + qsTr("Displays the IMEI number.") + qsTr("<br/>")
                    + qsTr("<br/>")
                    + qsTr("Leonard Lee") + qsTr("<br/>")
-                   + "sheeeng@gmail.com" + qsTr("<br/>")
+                   + qsTr("sheeeng@gmail.com") + qsTr("<br/>")
                    + qsTr("<br/>");
         }
     }

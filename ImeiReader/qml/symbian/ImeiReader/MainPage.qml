@@ -9,9 +9,9 @@ Page {
     orientationLock: PageOrientation.LockPortrait; // lock the screen orientation to portrait.
 
     Component.onCompleted: {
-        console.log("PageStackWindow onCompleted.");
-        console.log((platformInverted ? "onCompleted - Theme inverted." : "Theme not inverted."));
-        console.log((Settings.themeInverted ? "onCompleted - Settings.themeInverted inverted." : "Settings.themeInverted not inverted."));
+        //console.log("PageStackWindow onCompleted.");
+        //console.log((platformInverted ? "onCompleted - Theme inverted." : "Theme not inverted."));
+        //console.log((Settings.themeInverted ? "onCompleted - Settings.themeInverted inverted." : "Settings.themeInverted not inverted."));
     }
 
     Image { // See http://qt-project.org/doc/qt-4.8/qml-image.html page.
@@ -143,8 +143,8 @@ Page {
                     Settings.themeInverted = platformInverted;
                     imageBackground.source = Settings.themeInverted ? "qrc:/background/images/pattern_154.gif" : "qrc:/background/images/pattern_157.gif"; // See http://www.squidfingers.com/patterns page.
                     toolButtonThemeInverted.text = Settings.themeInverted ? qsTr("Dark") : qsTr("Light");
-                    console.log((platformInverted? "onCheckedChanged - Theme inverted." : "Theme not inverted."));
-                    console.log((Settings.themeInverted ? "onCheckedChanged - Settings.themeInverted inverted." : "Settings.themeInverted not inverted."));
+                    //console.log((platformInverted? "onCheckedChanged - Theme inverted." : "Theme not inverted."));
+                    //console.log((Settings.themeInverted ? "onCheckedChanged - Settings.themeInverted inverted." : "Settings.themeInverted not inverted."));
                 }
             }
             ToolButton {
@@ -164,17 +164,17 @@ Page {
         id: helpMenu
         visualParent: mainPage
         MenuLayout {
-            MenuItem { text: "About"; onClicked: showAboutDialog(); }
+            MenuItem { text: qsTr("About"); onClicked: showAboutDialog(); }
+//            MenuItem {
+//                text: qsTr("Website");
+//                property string acid3TestLink: "http://acid3.acidtests.org/";
+//                onClicked: {
+//                    Qt.openUrlExternally(acid3TestLink);
+//                    aboutDialog.accept();
+//                }
+//            }
             MenuItem {
-                text: "Website";
-                property string acid3TestLink: "http://acid3.acidtests.org/";
-                onClicked: {
-                    Qt.openUrlExternally(acid3TestLink);
-                    aboutDialog.accept();
-                }
-            }
-            MenuItem {
-                text: "Exit";
+                text: qsTr("Exit");
                 onClicked: {
                     showConfirmCloseDialog(); //Qt.quit();
                 }

@@ -18,20 +18,21 @@ CommonDialog {
             color: "white";
             elide: Text.ElideNone;
             horizontalAlignment: Text.AlignHCenter;
-            text:  String("<br/>")
-                   + "Displays the IMEI number." + String("<br/>")
-                   + String("<br/>")
-                   + String("Leonard Lee") + String("<br/>")
-                   + "sheeeng@gmail.com" + String("<br/>")
-                   + String("<br/>");
+            text:  qsTr("<br/>")
+                   + qsTr("Displays the IMEI number.") + qsTr("<br/>")
+                   + qsTr("<br/>")
+                   + qsTr("Leonard Lee") + qsTr("<br/>")
+                   + "sheeeng@gmail.com" + qsTr("<br/>")
+                   + qsTr("<br/>");
         }
     }
 
     buttons: ButtonRow {
         id: buttonsSection;
+        spacing: 16;
         anchors.horizontalCenter: parent.horizontalCenter;
         Button {
-            text: "Close";
+            text: qsTr("Close");
             onClicked: aboutDialog.accept();
         }
     }

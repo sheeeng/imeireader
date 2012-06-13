@@ -6,9 +6,9 @@ PageStackWindow {
     id: rootPageStackWindow;
 
     Component.onCompleted: {
-        console.log("PageStackWindow onCompleted.");
-        console.log((platformInverted ? "Theme inverted." : "Theme not inverted."));
-        console.log((Settings.themeInverted ? "Settings.themeInverted inverted." : "Settings.themeInverted not inverted."));
+        //console.log("PageStackWindow onCompleted.");
+        //console.log((platformInverted ? "Theme inverted." : "Theme not inverted."));
+        //console.log((Settings.themeInverted ? "Settings.themeInverted inverted." : "Settings.themeInverted not inverted."));
         platformInverted = Settings.themeInverted; // read settings upon startup
     }
 

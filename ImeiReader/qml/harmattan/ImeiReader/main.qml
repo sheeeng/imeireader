@@ -6,16 +6,16 @@ PageStackWindow {
     id: rootPageStackWindow;
 
     Component.onCompleted: {
-        console.log("PageStackWindow onCompleted.");
-        console.log((theme.inverted ? "Theme inverted." : "Theme not inverted."));
-        console.log((Settings.themeInverted ? "Settings.themeInverted inverted." : "Settings.themeInverted not inverted."));
+        //console.log("PageStackWindow onCompleted.");
+        //console.log((theme.inverted ? "Theme inverted." : "Theme not inverted."));
+        //console.log((Settings.themeInverted ? "Settings.themeInverted inverted." : "Settings.themeInverted not inverted."));
         theme.inverted = Settings.themeInverted; // read settings upon startup
         //theme.color = 12; // See http://www.meegoexperts.com/2011/09/qml-colour-themes-meego-harmattan/ and http://forum.meego.com/showthread.php?t=4387 pages.
     }
 
     Component.onDestruction: {
         //Settings.themeInverted = theme.inverted; // write settings upon exit will give segmentation fault in PageStackWindow
-        console.log("Page onDestruction.");
+        //console.log("Page onDestruction.");
     }
 
     platformStyle: PageStackWindowStyle {

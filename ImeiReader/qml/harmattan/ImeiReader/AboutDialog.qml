@@ -51,12 +51,12 @@ Dialog {
             font.family: "Nokia Pure";
             elide: Text.ElideNone;
             horizontalAlignment: Text.AlignHCenter;
-            text:  String("<br/>")
-                   + "Displays the IMEI number." + String("<br/>")
-                   + String("<br/>")
-                   + String("Leonard Lee") + String("<br/>")
-                   + "sheeeng@gmail.com" + String("<br/>")
-                   + String("<br/>");
+            text:  qsTr("<br/>")
+                   + qsTr("Displays the IMEI number.") + qsTr("<br/>")
+                   + qsTr("<br/>")
+                   + qsTr("Leonard Lee") + qsTr("<br/>")
+                   + qsTr("sheeeng@gmail.com") + qsTr("<br/>")
+                   + qsTr("<br/>");
         }
 
         Rectangle {
@@ -74,16 +74,16 @@ Dialog {
         anchors.horizontalCenter: parent.horizontalCenter;
         spacing: 16;
 
+//        Button {
+//            text: qsTr("Website");
+//            property string acid3TestLink: "http://acid3.acidtests.org/";
+//            onClicked: {
+//                Qt.openUrlExternally(acid3TestLink);
+//                aboutDialog.accept();
+//            }
+//        }
         Button {
-            text: "Website";
-            property string acid3TestLink: "http://acid3.acidtests.org/";
-            onClicked: {
-                Qt.openUrlExternally(acid3TestLink);
-                aboutDialog.accept();
-            }
-        }
-        Button {
-            text: "Close";
+            text: qsTr("Close");
             onClicked: aboutDialog.accept();
         }
     }

@@ -9,7 +9,7 @@ using namespace QtMobility;
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
     QApplication::setApplicationName("ImeiReader");
-    QApplication::setApplicationVersion(IMEIREADER_VERSION);
+    //QApplication::setApplicationVersion(IMEIREADER_VERSION);
     QApplication::setOrganizationName("S2");
 
 #ifdef QT_NO_DEBUG

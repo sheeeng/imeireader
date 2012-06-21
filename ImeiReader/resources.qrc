@@ -2,5 +2,7 @@
     <qresource prefix="/background">
         <file>images/pattern_154.gif</file>
         <file>images/pattern_157.gif</file>
+        <file>resources/ImeiReaderSquircle96.png</file>
+        <file>ImeiReader.svg</file>
     </qresource>
 </RCC>

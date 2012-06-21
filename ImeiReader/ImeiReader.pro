@@ -30,6 +30,7 @@ images_files.target = images
 # Platform specific files and configuration
 symbian {
     #TARGET = ImeiReader
+    ICON = ImeiReader.svg
     TARGET.UID3 = 0xE0CFB44A
     #DEFINES += IMEIREADER_VERSION=\\\"0.0.1\\\"
     message($$IMEIREADER_VERSION)
@@ -74,7 +75,7 @@ SOURCES += main.cpp \
 
 contains(MEEGO_EDITION,harmattan): {
 	# Deploy splash screen images. See https://projects.developer.nokia.com/svn/nfcinteractor/nfcinteractor.pro page.
-	splashimages.files = ImeiReaderSplashPortrait.png ImeiReaderSplashLandscape.png
+        splashimages.files = resources/ImeiReaderSplashPortrait.png resources/ImeiReaderSplashLandscape.png
 	splashimages.path = /opt/$${TARGET}/
 	INSTALLS += splashimages
 }

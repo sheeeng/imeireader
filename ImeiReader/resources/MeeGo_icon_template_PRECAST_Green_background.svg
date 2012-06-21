@@ -5,7 +5,7 @@
 	 width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
 <g>
 	
-		<image overflow="visible" width="80" height="80" xlink:href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAgEASABIAAD/7AARRHVja3kAAQAEAAAAHgAA/+4AIUFkb2JlAGTAAAAAAQMA
+		<image overflow="visible" width="80" height="80" xlink:href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAgEAkACQAAD/7AARRHVja3kAAQAEAAAAHgAA/+4AIUFkb2JlAGTAAAAAAQMA
 EAMCAwYAAAKVAAADuwAABlr/2wCEABALCwsMCxAMDBAXDw0PFxsUEBAUGx8XFxcXFx8eFxoaGhoX
 Hh4jJSclIx4vLzMzLy9AQEBAQEBAQEBAQEBAQEABEQ8PERMRFRISFRQRFBEUGhQWFhQaJhoaHBoa
 JjAjHh4eHiMwKy4nJycuKzU1MDA1NUBAP0BAQEBAQEBAQEBAQP/CABEIAFAAUAMBIgACEQEDEQH/
@@ -33,7 +33,7 @@ Pb6us2UqR+1RWf4Aq2QxWpHYcT5az9SbxrB6LGHV91KxiPIDcTCFDkAOkXGFLp6zymjLC3hyXX3w
 pVVVeegiQRhlfPLOHFrMkyvPMLz0CFuZMaiqWkzsfrVDsNp8tB+pV51AdMOUjt2ITQr5VjuqhdNU
 owOI1EZiDnBsS2l6aUiQxJSoy0kTj1hwI/GPWHAj8YLLrs21d4BKUz4QLEU1MjG4vUBnJOYCG6Rq
 /CJrV8yz3lWeVVt4pdxYuWndVBVQvpdRmQ52FaxMHoiSqRaudEl+AmPY1H+S/wAY9jUf5L/GJJpF
-p51yR4yICq59LSM6G+2rWZAdMeVSN4Z99ZvWreVZ/9k=" transform="matrix(1 0 0 1 -20 -20)">
+p51yR4yICq59LSM6G+2rWZAdMeVSN4Z99ZvWreVZ/9k=" transform="matrix(0.5 0 0 0.5 0 0)">
 	</image>
 </g>
 </svg>

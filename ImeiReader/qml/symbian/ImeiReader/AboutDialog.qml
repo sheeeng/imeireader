@@ -6,7 +6,7 @@ CommonDialog {
     id: aboutDialog;
 
     titleText: qsTr("About ") + ApplicationNameImeiReader;
-    titleIcon: "qrc:/background/ImeiReader.svg"
+    titleIcon: "qrc:/images/ImeiReader.svg"
 
     content: Column {
         id: contentSection;

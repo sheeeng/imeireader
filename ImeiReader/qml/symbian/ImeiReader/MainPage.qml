@@ -17,7 +17,7 @@ Page {
     Image { // See http://qt-project.org/doc/qt-4.8/qml-image.html page.
         id: imageBackground;
         anchors.fill: parent;
-        source: Settings.themeInverted ? "qrc:/background/images/pattern_154.gif" : "qrc:/background/images/pattern_157.gif"; // See http://www.squidfingers.com/patterns page.
+        source: Settings.themeInverted ? "qrc:/backgrounds/images/pattern_154.gif" : "qrc:/backgrounds/images/pattern_157.gif"; // See http://www.squidfingers.com/patterns page.
         fillMode: Image.Tile;
     }
 
@@ -135,14 +135,14 @@ Page {
             }
             ToolButton {
                 id: toolButtonThemeInverted
-                text: Settings.themeInverted ? qsTr("Light") : qsTr("Dark");
+                text: Settings.themeInverted ? qsTr("Brighther") : qsTr("Darker");
                 checkable: true;
                 checked: platformInverted;
                 onCheckedChanged: {
                     platformInverted = !platformInverted; // See http://doc.qt.nokia.com/qtquick-components-symbian-1.1/inverted-style.html page.
                     Settings.themeInverted = platformInverted;
-                    imageBackground.source = Settings.themeInverted ? "qrc:/background/images/pattern_154.gif" : "qrc:/background/images/pattern_157.gif"; // See http://www.squidfingers.com/patterns page.
-                    toolButtonThemeInverted.text = Settings.themeInverted ? qsTr("Dark") : qsTr("Light");
+                    imageBackground.source = Settings.themeInverted ? "qrc:/backgrounds/images/pattern_154.gif" : "qrc:/backgrounds/images/pattern_157.gif"; // See http://www.squidfingers.com/patterns page.
+                    //toolButtonThemeInverted.text = Settings.themeInverted ? qsTr("Dark") : qsTr("Light");
                     //console.log((platformInverted? "onCheckedChanged - Theme inverted." : "Theme not inverted."));
                     //console.log((Settings.themeInverted ? "onCheckedChanged - Settings.themeInverted inverted." : "Settings.themeInverted not inverted."));
                 }

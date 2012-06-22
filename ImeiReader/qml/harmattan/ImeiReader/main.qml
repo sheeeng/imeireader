@@ -19,9 +19,9 @@ PageStackWindow {
     }
 
     platformStyle: PageStackWindowStyle {
-        background: theme.inverted ? "qrc:/background/images/pattern_154.gif" : "qrc:/background/images/pattern_157.gif"; // See http://www.squidfingers.com/patterns page.
-        landscapeBackground: theme.inverted ? "qrc:/background/images/pattern_154.gif" : "qrc:/background/images/pattern_157.gif"; // See http://www.squidfingers.com/patterns page.
-        portraitBackground: theme.inverted ? "qrc:/background/images/pattern_154.gif" : "qrc:/background/images/pattern_157.gif"; // See http://www.squidfingers.com/patterns page.
+        background: theme.inverted ? "qrc:/backgrounds/images/pattern_154.gif" : "qrc:/backgrounds/images/pattern_157.gif"; // See http://www.squidfingers.com/patterns page.
+        landscapeBackground: theme.inverted ? "qrc:/backgrounds/images/pattern_154.gif" : "qrc:/backgrounds/images/pattern_157.gif"; // See http://www.squidfingers.com/patterns page.
+        portraitBackground: theme.inverted ? "qrc:/backgrounds/images/pattern_154.gif" : "qrc:/backgrounds/images/pattern_157.gif"; // See http://www.squidfingers.com/patterns page.
         backgroundFillMode: Image.Tile;
     }
 

@@ -75,7 +75,7 @@ SOURCES += main.cpp \
 
 contains(MEEGO_EDITION,harmattan): {
 	# Deploy splash screen images. See https://projects.developer.nokia.com/svn/nfcinteractor/nfcinteractor.pro page.
-        splashimages.files = resources/ImeiReaderSplashPortrait.png resources/ImeiReaderSplashLandscape.png
+        splashimages.files = images/ImeiReaderSplashPortrait.png images/ImeiReaderSplashLandscape.png
 	splashimages.path = /opt/$${TARGET}/
 	INSTALLS += splashimages
 }

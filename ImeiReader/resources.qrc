@@ -1,8 +1,10 @@
 <RCC>
-    <qresource prefix="/background">
+    <qresource prefix="/backgrounds">
         <file>images/pattern_154.gif</file>
         <file>images/pattern_157.gif</file>
-        <file>resources/ImeiReaderSquircle96.png</file>
+    </qresource>
+    <qresource prefix="/images">
         <file>ImeiReader.svg</file>
+        <file>ImeiReader80.png</file>
     </qresource>
 </RCC>

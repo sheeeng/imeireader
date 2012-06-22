@@ -6,6 +6,8 @@ QueryDialog {
     id: confirmCloseDialog;
 
     titleText: qsTr("Exit");
+    titleIcon: "qrc:/images/ImeiReader.svg"
+
     message : qsTr("Close this application?");
     height: 120; // explicitly needed to set this height to show message.
 

@@ -13,9 +13,10 @@ Dialog {
         Image {
             anchors.horizontalCenter: parent.horizontalCenter;
             //source: "http://qt.nokia.com/images/products/qt-logo";
-            source: "image://theme/icon-l-gallery";
-            width: 128;
-            height: 128;
+            //source: "image://theme/icon-l-gallery";
+            source: "qrc:/images/ImeiReader80.png"
+            width: 80;
+            height: 80;
             fillMode: Image.PreserveAspectFit;
             smooth: true;
         }

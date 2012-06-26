@@ -135,7 +135,7 @@ Page {
             }
             ToolButton {
                 id: toolButtonThemeInverted
-                text: Settings.themeInverted ? qsTr("Brighther") : qsTr("Darker");
+                text: Settings.themeInverted ? qsTr("Light Skin") : qsTr("Dark Skin");
                 checkable: true;
                 checked: platformInverted;
                 onCheckedChanged: {

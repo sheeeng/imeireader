@@ -18,7 +18,7 @@ exists($$QMAKE_INCDIR_QT"/../qmsystem2/qmkeys.h"):!contains(MEEGO_EDITION,harmat
 # Additional import path used to resolve QML modules in Creator's code model
 QML_IMPORT_PATH =
 
-#symbian:TARGET.UID3 = 0xE0CFB44A
+#symbian:TARGET.UID3 = 0x2006823D
 
 # Add more folders to ship with the application, here
 # Files common to all platforms
@@ -31,11 +31,18 @@ images_files.target = images
 symbian {
     #TARGET = ImeiReader
     ICON = ImeiReader.svg
-    TARGET.UID3 = 0xE0CFB44A
+    TARGET.UID3 = 0x2006823D
+    CONFIG += qt-components
     #DEFINES += IMEIREADER_VERSION=\\\"0.0.1\\\"
     message($$IMEIREADER_VERSION)
     platform_qml_files.source = qml/symbian/ImeiReader
     platform_qml_files.target = qml
+
+    my_deployment.pkg_prerules += vendorinfo
+
+    DEPLOYMENT += my_deployment
+
+    vendorinfo += "%{\"Leonard Lee\"}" ":\"Leonard Lee\""
 } else:contains(MEEGO_EDITION,harmattan): {
     DEFINES += IMEIREADER_VERSION=\\\"0.0.1\\\"
     platform_qml_files.source = qml/harmattan/ImeiReader

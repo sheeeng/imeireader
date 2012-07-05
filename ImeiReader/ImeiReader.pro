@@ -22,8 +22,9 @@ QML_IMPORT_PATH =
 
 # Add more folders to ship with the application, here
 # Files common to all platforms
-common_qml_files.source = qml/common/ImeiReader
-common_qml_files.target = qml
+# common_qml_files.source = qml/common/ImeiReader
+# common_qml_files.target = qml
+
 images_files.source = images
 images_files.target = images
 
@@ -51,7 +52,7 @@ symbian {
 
 message($$_PRO_FILE_)
 
-DEPLOYMENTFOLDERS = common_qml_files images_files platform_qml_files
+DEPLOYMENTFOLDERS = images_files platform_qml_files
 
 # Smart Installer package's UID
 # This UID is from the protected range and therefore the package will
